@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wasumi Message Dialog Box</title>
+        <link rel="stylesheet" type="text/css" href="./css/wasumi-msg-dialog.css">        
+        <script src="./js/jquery.min.js"></script>
+        <script src="./js/wasumi-msg-dialog.js"></script>
+    </head>
+    <body>
+        <button onclick="showNormal();">แสดงข้อความปกติ</button>
+        <br><br>
+        <button onclick="showIcon();">แสดงข้อความพร้อมไอคอน</button>
+        <br><br>
+        <button onclick="showWithButton();">แสดงข้อความพร้อมปุ่มที่กำหนดเอง</button>
+        <br><br>
+        <button onclick="showAsDialogMessage();">แสดงข้อความในโหมด DialogBox</button>
+        <br><br>
+        <button onclick="showWithFunction();">แสดงข้อความที่กำหนด Function ให้ปุ่ม</button>
+        <br><br>
+        <button onclick="showCustomButton();">แสดงข้อความพร้อมปุ่มที่สร้างเอง</button>
+        <br><br>
+        <button onclick="showCustomButtonWithFunction();">แสดงข้อความพร้อมกำหนด Function ให้ปุ่มที่สร้างเอง</button>
+        <script>
+            const wasumiMessage = wasuInit({
+                    element: 'body',
+                    bgStyle: {
+                        //Jquery's css
+                    },
+                    animation: 'zoomIn',
+                    animationDuration: '.5s'
+                });
+
+                function showNormal() {
+                    wasumiMessage.openMsg('นี่คือข้อความปกติ!', 'สวัสดี!');
+                }
+
+                function showIcon() {
+                    wasumiMessage.openMsg('คุณหิวข้าวหรือไม่?', 'แสดงข้อความพร้อมไอคอน', 'question');//ประกอบด้วย question, success, error, warning, info, link
+                    //หรือคุณสามารถกำหนด Icon ขึ้นมาเองด้วย FontAwesome : https://fontawesome.com/icons?d=gallery
+                }
+
+                function showWithButton() {
+                    wasumiMessage.openMsg('คุณหิวข้าวจริงๆใช่หรือไม่?!', 'แสดงข้อความพร้อมปุ่มที่กำหนดเอง', 'question', {
+                        option: ['no', 'yes'] //ประกอบด้วย close, cancel, okay, yes, no, tryAgain และปุ่มจะเรียงตามลำดับที่วางไว้ใน option
+                    });
+                }
+
+                function showAsDialogMessage() {
+                    wasumiMessage.openMsg('กด ใช่ หรือ ไม่ใช่ เพื่อปิดข้อความนี้', 'แสดงข้อความในโหมด DialogBox', 'question', {
+                        option: ['no', 'yes']
+                    }).dialog(); //ใส่ฟังชั่น dialog() ต่อท้าย จะทำให้ข้อควมแสดงออกมาในโหมด DialogBox
+                }
+
+                function showWithFunction() {
+                    wasumiMessage.openMsg('ลองกดปุ่ม \'ลองใหม่\' สิ', 'แสดงข้อความที่กำหนด Function ให้ปุ่ม', 'warning', {
+                        option: ['close', 'tryAgain'],
+                        fn: {
+                            //ให้อ้างอิง key ตาม option
+                            tryAgain: function() {
+                                alert('ลองใหม่แล้วนะ!');
+                            }
+                        }
+                    });
+                }
+
+                function showCustomButton() {
+                    wasumiMessage.openMsg('นี่คือปุ่มที่สร้างขึ้นเอง', 'แสดงข้อความพร้อมปุ่มที่สร้างเอง', 'info', {
+                        addButton: [
+                            //ห้ามตั้ง namespace ซ้ำกับค่า Default ของปุ่ม
+                            {namespace: 'myBtn1', text: 'MyBtn1'},
+                            {namespace: 'myBtn2', text: 'MyBtn2'}
+                        ],
+                        option: ['close', 'myBtn1', 'myBtn2'] //คุณสามารถใช้ร่วมกับค่า Default ของปุ่มได้
+                    });
+                }
+
+                function showCustomButtonWithFunction() {
+                    wasumiMessage.openMsg('นี่คือปุ่มที่สร้างขึ้นเอง และใส่ Function ให้มันแล้ว\nลองกดดูเลยสิ!', 'แสดงข้อความพร้อมกำหนด Function ให้ปุ่มที่สร้างเอง', 'info', {
+                        addButton: [
+                            //ห้ามตั้ง namespace ซ้ำกับค่า Default ของปุ่ม
+                            {namespace: 'myBtn1', text: 'MyBtn1'},
+                            {namespace: 'myBtn2', text: 'MyBtn2'}
+                        ],
+                        option: ['close', 'myBtn1', 'myBtn2'], //คุณสามารถใช้ร่วมกับค่า Default ของปุ่มได้
+                        fn: {
+                            //ให้อ้างอิง key ตาม option
+                            myBtn1: function() {
+                                alert('นี่คือ MyBtn1');
+                            },
+                            myBtn2: function() {
+                                alert('นี่คือ MyBtn2');
+                            }
+                        }
+                    }).dialog();
+                }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css?family=Kanit'); /*Google Font - Kanit */
+
+#wasu-msg {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+	color: #5d5d5d;
+	font-family: 'Kanit', sans-serif;
+    background-color: rgba(0,0,0,.2);
+    animation: wasu-fadeIn .25s;
+    z-index: 99999;
+    box-sizing: border-box;
+}
+
+#wasu-msg #wasu-msg-contain {
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    animation: wasu-zoomIn .25s forwards;
+    box-sizing: border-box;
+}
+
+#wasu-msg #wasu-msg-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+    min-width: 400px;
+    min-height: 172px;
+    background-color: white;
+    border-radius: 5px;
+    z-index: 100;
+    padding-bottom: 50px;
+    overflow: hidden;
+    box-shadow: 0 0 5px 1px rgba(0,0,0,.2);
+    border: 1px #e8e8e8 solid;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-title {
+    width: 100%;
+    height: 30px;
+    padding-left: 10px;
+    padding-right: 40px;
+    line-height: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    color: #565656;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-title #btn-closeMsg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    border: 0px transparent solid;
+    background-color: rgba(0,0,0,0);
+    color: #565656;
+    font-size: 19px;
+    cursor: pointer;
+    outline: none;
+    transition-duration: .15s;
+    padding: 0;
+    border-radius: 0 5px 0 0;
+    transition-duration: .1s;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-title #btn-closeMsg:hover {
+    background-color: red;
+    color: white;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-title #btn-closeMsg:active {
+    background-color: rgb(165, 1, 1);
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-container {
+    display: table;
+    padding: 10px;
+    padding-bottom: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-container #wasu-msg-icon {
+    display: table-cell;
+    font-size: 60px;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-container #wasu-msg-message {
+    display: table-cell;
+    padding-left: 20px;
+    vertical-align: middle;
+    white-space: pre-wrap;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-buttonArea {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    text-align: right;
+    height: 42px;
+    background-color: #e8e8e8;
+    border-radius: 0 0 5px 5px;
+    line-height: 40px;
+    padding: 0 5px;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-buttonArea button {
+    border: 1px #eaeaea solid;
+    background-color: white;
+    min-width: 50px;
+    margin-left: 5px;
+    padding: 3px 10px;
+    font-size: 15px;
+    font-family: inherit;
+    box-shadow: 0 2px 5px rgba(0,0,0,.12);
+    outline: none;
+    cursor: pointer;
+    border-radius: 3px;
+    transition-duration: .1s;
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-buttonArea button:hover {
+    box-shadow: 0 3px 8px rgba(0,0,0,.24);
+    box-sizing: border-box;
+}
+
+#wasu-msg .w-buttonArea button:active {
+    box-shadow: inset 0 2px 5px 0 rgba(0,0,0,.2);
+    transform: translate(0,2px);
+    box-sizing: border-box;
+}
+
+@keyframes wasu-fadeIn {
+    from {
+		opacity: 0;
+	}
+    to {
+		opacity: 1;
+	}
+}
+
+@keyframes wasu-fadeInUp {
+    from {
+			transform: translate(0 ,100px);
+			opacity: 0;
+	}
+    to {
+			transform: translate(0 ,0);
+			opacity: 1;
+	}
+}
+
+@keyframes wasu-fadeInLeft {
+	from {
+		transform: translate(-100px ,0);
+		opacity: 0;
+    box-sizing: border-box;
+}
+	to {
+		transform: translate(0 ,0);
+		opacity: 1;
+	}
+}
+
+@keyframes wasu-fadeInRight {
+	from {
+		transform: translate(100px ,0);
+		opacity: 0;
+    box-sizing: border-box;
+}
+	to {
+		transform: translate(0 ,0);
+		opacity: 1;
+	}
+}
+
+@keyframes wasu-fadeInDown {
+	from {
+		transform: translate(0 ,-100px);
+		opacity: 0;
+	}
+	to {
+		transform: translate(0 ,0);
+		opacity: 1;
+	}
+}
+
+@keyframes wasu-fadeOut {
+	from {
+	opacity: 1;
+    box-sizing: border-box;
+}
+	to {
+	opacity: 0;
+    box-sizing: border-box;
+}
+}
+
+@keyframes wasu-fadeOutDown {
+    from {
+		transform: translate(0 ,0);
+		opacity: 1;
+	}
+    to {
+		transform: translate(0 ,100px);
+		opacity: 0;
+	}
+}
+
+@keyframes wasu-fadeOutLeft {
+	from {
+		transform: translate(0 ,0);
+		opacity: 1;
+    box-sizing: border-box;
+}
+	to {
+		transform: translate(-100px, 0);
+		opacity: 0;
+	}
+}
+
+@keyframes wasu-fadeOutRight {
+	from {
+		transform: translate(0 ,0);
+		opacity: 1;
+    box-sizing: border-box;
+}
+	to {
+		transform: translate(100px, 0);
+		opacity: 0;
+	}
+}
+
+@keyframes wasu-zoomIn {
+	0% {
+		opacity: 0;
+		transform: scale(.5);
+	}
+
+  100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes wasu-zoomInOut {
+	0% {
+		opacity: 0;
+		transform: scale(1.1);
+	}
+
+  100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes wasu-zoomInUp {
+	from {
+		opacity: 0;
+		transform: translate(0 ,100px);
+		transform: scale(.5);
+	}
+  to {
+		opacity: 1;
+		transform: translate(0 ,0);
+		transform: scale(1);
+	}
+}
+
+@keyframes wasu-zoomOut {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+    to {
+		opacity: 0;
+		transform: scale(.5);
+	}
+}
+
+@keyframes wasu-zoomOutDown {
+	from {
+		opacity: 1;
+		transform: translate(0 ,0) scale(1);
+	}
+  to {
+		opacity: 0;
+		transform: translate(0 ,100px) scale(.5);
+	}
+}
+
+@keyframes wasu-bounceIn {
+	0% {
+		opacity: 0;
+		transform: scale(.5);
+	}
+	60% {
+		opacity: 1;
+		transform: scale(1.1);
+	}
+
+  100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes wasu-bounceInOutIn {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+		background-color: rgba(255,255,255,0);
+	}
+	30% {
+		opacity: 1;
+		transform: scale(0.9);
+		background-color: rgba(255,255,255,0);
+	}
+	40% {
+		opacity: 1;
+		background-color: rgba(255,255,255,0);
+	}
+
+	70% {
+		opacity: .5;
+		background-color: rgba(255,255,255,.7);
+	}
+
+  100% {
+		opacity: 0;
+		transform: scale(6);
+		background-color: rgba(255,255,255,0);
+	}
+}
+
+@keyframes wasu-marquees {
+ 	0% { 
+ 		-moz-transform: translateX(70%); /* Firefox bug fix */
+ 		-webkit-transform: translateX(70%); /* Firefox bug fix */
+ 		transform: translateX(70%);
+ 	}
+ 	100% { 
+ 		-moz-transform: translateX(-100%); /* Firefox bug fix */
+ 		-webkit-transform: translateX(-100%); /* Firefox bug fix */
+ 		transform: translateX(-100%); 
+ 	}
+}
+
+@keyframes wasu-blink {
+	0% {
+		opacity: 0;
+	}
+	
+	30% {
+		opacity: 1;
+	}
+	
+	100% {
+		opacity: 0;
+	}
+}
